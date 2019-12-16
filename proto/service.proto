@@ -1,0 +1,33 @@
+syntax = "proto3";
+
+package proto;
+
+// Server Requests
+message SetRequest{
+    string key = 1;
+    string value = 2;
+}
+
+message GetRequest{
+    string key = 1;
+}
+
+message DeleteRequest{
+    string key = 1;
+}
+
+// Server Response
+message ServerResponse{
+    bool success = 1;
+    string value = 2;
+    string error = 3;
+}
+
+// Define service
+service BasicService{
+    rpc Set(SetRequest) returns (ServerResponse);
+    rpc Get(GetRequest) returns (ServerResponse);
+    rpc Delete(DeleteRequest) returns (ServerResponse);
+}
+
+
